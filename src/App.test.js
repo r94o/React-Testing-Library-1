@@ -21,10 +21,12 @@ test('checkbox initially is unchecked', () => {
   expect(checkboxEl).not.toBeChecked();
 });
 
-test('button is disabled when checkbox checked', () => {
+test('toggling checkbox disables button', () => {
   render(<App />);
   const checkboxEl = screen.getByRole("checkbox");
   const buttonEl = screen.getByRole("button", { name: 'Change to blue' } );
   fireEvent.click(checkboxEl)
   expect(buttonEl).toBeDisabled();
+  fireEvent.click(checkboxEl)
+  expect(buttonEl).toBeEnabled();
 });
