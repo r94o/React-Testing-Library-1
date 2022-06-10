@@ -14,3 +14,17 @@ test('button turns blue when clicked', () => {
   expect(buttonEl).toHaveStyle({ backgroundColor: 'blue' });
   expect(buttonEl.textContent).toBe("Change to red");
 });
+
+test('checkbox initially is unchecked', () => {
+  render(<App />);
+  const checkboxEl = screen.getByRole("checkbox");
+  expect(checkboxEl).not.toBeChecked();
+});
+
+test('button is disabled when checkbox checked', () => {
+  render(<App />);
+  const checkboxEl = screen.getByRole("checkbox");
+  const buttonEl = screen.getByRole("button", { name: 'Change to blue' } );
+  fireEvent.click(checkboxEl)
+  expect(buttonEl).toBeDisabled();
+});
