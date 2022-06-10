@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div>
-      <button style={{ backgroundColor: colour }} onClick={ handleClick } disabled={ disabledFlag }>Change to { otherColour }</button>
+      <button style={{ backgroundColor: disabledFlag ? 'grey' : colour }} onClick={ handleClick } disabled={ disabledFlag }>Change to { otherColour }</button>
       <input type="checkbox" id="disable-button" onChange={ handleChange } />
       <label htmlFor="disable-button">Disable button</label>
     </div>

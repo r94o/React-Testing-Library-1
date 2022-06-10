@@ -30,3 +30,12 @@ test('toggling checkbox disables button', () => {
   fireEvent.click(checkboxEl)
   expect(buttonEl).toBeEnabled();
 });
+test('toggling checkbox changes button colour to grey', () => {
+  render(<App />);
+  const checkboxEl = screen.getByRole("checkbox", { name: 'Disable button'});
+  const buttonEl = screen.getByRole("button", { name: 'Change to blue' } );
+  fireEvent.click(checkboxEl)
+  expect(buttonEl).toHaveStyle({ backgroundColor: 'grey' });
+  fireEvent.click(checkboxEl)
+  expect(buttonEl).toHaveStyle({ backgroundColor: 'red' });
+});
